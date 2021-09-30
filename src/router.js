@@ -1,6 +1,6 @@
 const { createRouter, createWebHistory } = require("vue-router");
 
-import Home from './components/home/Home.vue'
+import Home from './components/home/DsHome.vue'
 import Login from './components/autentikasi/Login.vue'
 import Register from './components/autentikasi/Register.vue'
 

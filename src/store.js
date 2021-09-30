@@ -8,10 +8,9 @@ const store = createStore({
         }
     },
     getters:{
-        token(state){
-            return state.token = localStorage.getItem('token')
+        user(state){
+            return state.user
         },
-
     },
     mutations:{
         SET_TOKEN(state, payload){
