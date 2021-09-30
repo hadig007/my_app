@@ -28,11 +28,20 @@ export default {
             axios.post('auth/logout').then((res)=>{
                 console.log(res.data)
                 this.$store.dispatch('storeToken', null)
+                this.$store.dispatch('storeUser', null)
                 localStorage.removeItem('token')
             }).catch(er=>console.log(er.response.data))
         }
     },
     async created(){
+        await axios.get('auth/user-profile',{
+            headers:{
+                Authorization : 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then((res)=>{
+            console.log(res.data)
+                this.$store.dispatch('storeUser', res.data)
+            })
         this.loading = true
         let has = localStorage.getItem('token')
         if(has){
