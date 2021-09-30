@@ -3,27 +3,79 @@
         <div v-if="loading" class="loading">
             <h1>Loading . . .</h1>
         </div>
-        <h1>Register page</h1>
+        <h1>Register page 😄</h1>
         <div class="input">
+            <label for="">Name</label>
+            <input type="text" v-model="name">
             <label for="">Email</label>
             <input type="text" v-model="email">
             <label for="">Password</label>
             <input type="password" v-model="password">
-            <button @click="login">Login</button>
+            <label for="">Password Confirmation</label>
+            <input type="password" v-model="password_confirmation">
+            <button @click="register">Register</button>
+            <span>have an account? <router-link to="/login">login</router-link></span>
         </div>
     </div>
-        <div v-if="isgagal" class="gagal">
-            <h3>Email atau password Salah</h3>
-            <button @click="isgagal =! isgagal" style="width:40px;color:grey;margin:5px;border:red solid 1px">ok</button>
+        <div v-if="selesai" class="gagal">
+            <h3>Akun Berhasil di daftar😍</h3>
+            <button @click="selesai =! selesai" style="width:40px;color:grey;margin:5px;border:red solid 1px">ok</button>
+        </div>
+        <div v-if="gagal" class="gagal">
+            <h3>Akun yang anda masukkan tidak valid😢</h3>
+            <button @click="gagal =! gagal" style="width:40px;color:grey;margin:5px;border:red solid 1px">ok</button>
         </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
-
+    data(){
+        return{
+            name:'',
+            email:'',
+            password:'',
+            password_confirmation:'',
+            loading:false,
+            selesai:false,
+            gagal:false,
+        }
+    },
+    methods:{
+        register(){
+            this.loading = true
+            axios.post('auth/register',{
+                name : this.name,
+                email: this.email,
+                password: this.password,
+                password_confirmation:this.password
+            }).then((res)=>{
+                console.log(res.data)
+                this.loading = false
+                this.selesai = true
+                setTimeout(()=>{
+                    this.$router.push('/login')
+                    this.selesai = false
+                },2000)
+            }).catch((er)=>{
+                console.log(er.response)
+                this.loading = false
+                this.gagal = true
+                setTimeout(()=>{
+                    this.gagal = false
+                },2000)
+            })
+        }
+    }
 }
 </script>
 
 <style scoped>
+span{
+    font-size: 0.9rem;
+}
+a{
+    text-decoration: none;
+}
 .loading{
     position: absolute;
     background-color:hotpink;
@@ -54,7 +106,7 @@ h1{
 .input{
     box-shadow:none;
     margin: 0;
-    background: rgba(255, 255, 255, 0.226);
+    background: rgba(255, 255, 255, 0.185);
     display: flex;
     flex-direction: column;
     border-radius: 4px;

@@ -10,6 +10,7 @@
             <label for="">Password</label>
             <input type="password" v-model="password">
             <button @click="login">Login</button>
+            <span>haven't an account? <router-link to="/register">register</router-link></span>
         </div>
     </div>
         <div v-if="isgagal" class="gagal">
@@ -51,6 +52,12 @@ export default {
 </script>
 
 <style scoped>
+span{
+    font-size: 0.9rem;
+}
+a{
+    text-decoration: none;
+}
 .loading{
     position: absolute;
     background-color:hotpink;

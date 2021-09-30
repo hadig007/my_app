@@ -16,7 +16,7 @@ import { mapGetters } from 'vuex'
 export default {
     data(){
         return{
-            loading: true
+            loading: false
         }
     },
     computed:{
@@ -24,26 +24,30 @@ export default {
     },
     methods:{
         logout(){
+            this.$router.push('/login')
             axios.post('auth/logout').then((res)=>{
                 console.log(res.data)
                 this.$store.dispatch('storeToken', null)
                 localStorage.removeItem('token')
-                this.$router.push('/login')
             }).catch(er=>console.log(er.response.data))
         }
     },
     async created(){
         this.loading = true
-        if(this.token || localStorage.getItem('token')){
-            axios.get('auth/user-profile')
+        console.log('token di created',this.$store.state.token)
+        if(this.$store.state.token){
+            setTimeout(()=>{
+                axios.get('auth/user-profile')
                 .then((res)=>{
                     console.log(res.data)
                     this.loading = false
+                    this.$store.dispatch('storeUser', res.data)
+                    console.log('user set')
                 }).catch((e)=>{
                     console.log(e.response.data)
-            this.loading = true
                 })
             console.log('having a token')
+            },1000)
         }else{
             this.loading = true
             this.$router.push('/login')
