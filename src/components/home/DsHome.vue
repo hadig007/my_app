@@ -8,20 +8,20 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div v-if="!mini" class="col-md-2">
-                        <!-- sidebar -->
-                        <sidebar></sidebar>
-                    </div>
-                    <div v-if="mini" @hide="mini=!mini" class="col-md-1">
+                    <div v-if="mini" v-on:click="minied" class="col-md-1">
                         <mini-sidebar></mini-sidebar>
                     </div>
-
-
-                    <div v-if="!mini"  class="col-md-10">
+                    <div  v-if="mini" class="col-md-11">
                         <!-- main content -->
                        <div class="content"></div>
                     </div>
-                    <div  v-if="mini" class="col-md-11">
+                    
+
+                    <div v-if="!mini" v-on:click="minied"  class="col-md-2">
+                        <!-- sidebar -->
+                        <sidebar></sidebar>
+                    </div>
+                    <div v-if="!mini"  class="col-md-10">
                         <!-- main content -->
                        <div class="content"></div>
                     </div>
@@ -46,6 +46,12 @@ export default {
         }
     },
     computed:{
+    },
+    methods:{
+        minied(){
+            this.mini = !this.mini
+            console.log(this.mini)
+        }
     },
     async created(){
         await axios.get('auth/user-profile',{
@@ -85,12 +91,13 @@ export default {
 <style scoped>
 h1{
     text-align: center;
+    margin: 50px;
 }
 .row>*{
     padding: 0;
 }
 .content{
-    background-color:grey;
+    background-color:rgb(212, 212, 212);
     width: 100%;
     height: 1000px;
 }

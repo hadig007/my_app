@@ -1,7 +1,7 @@
 <template>
     <div>
        <div class="menus">
-        <button @click="$emits('hide')">
+        <button v-on:click="$emit('hide-button')">
             <h4><i class="fas fa-bars"></i></h4>
         </button>
             <!-- account -->
@@ -17,6 +17,9 @@
 
 <script>
 export default {
+    methods:{
+        // emits:['mini'],
+    }
 }
 </script>
 

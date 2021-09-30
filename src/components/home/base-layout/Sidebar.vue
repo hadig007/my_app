@@ -1,9 +1,20 @@
 <template>
     <div>
-        <div class="user">
-            <h3 v-if="user">Hi,{{ user.name }}</h3>
+        <div class="pilihan">
+            <div class="menus">
+            <h5>Admin</h5>
+            <button v-on:click="$emit('hide-button')">
+                <h4><i class="fas fa-bars"></i></h4>
+            </button>
         </div>
-        <p>menu</p>
+        <div class="account">
+            <h5><i class="fas fa-user-circle"></i> Account</h5>
+        </div>
+        <div class="menu">
+            <h5><i class="fas fa-book-medical"></i> Add Book</h5>
+            <h5><i class="fas fa-book"></i> All Book</h5>
+        </div>
+        </div>
     </div>
 </template>
 <script>
@@ -21,15 +32,34 @@ export default {
 
 <style scoped>
 div{
-    background-color: thistle;
-    width: 100%;
-    height: 1000px;
-    padding: 10px;
+    padding: 20px;
 }
-.user{
-    color: grey;
+.menus{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0 20px;
     margin: 0;
-    width: 100%;
-    text-align: center;
+}
+.pilihan{
+    background-color: rgb(197, 25, 197);
+    padding: 0 0 20px 0 ;
+    color: whitesmoke;
+    border-radius: 4px;
+}
+button{
+    color: whitesmoke;
+    background-color: transparent;
+    border: none;
+}
+.account{
+    padding: 0 10px;
+    margin: 0;
+}
+.menu{
+    padding: 0 10px;
+}
+h5{
+    margin: 30px 0;
 }
 </style>
