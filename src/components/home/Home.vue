@@ -24,9 +24,12 @@ export default {
     },
     methods:{
         logout(){
-            this.$store.dispatch('storeToken', null)
-            localStorage.removeItem('token')
-            this.$router.push('/login')
+            axios.post('auth/logout').then((res)=>{
+                console.log(res.data)
+                this.$store.dispatch('storeToken', null)
+                localStorage.removeItem('token')
+                this.$router.push('/login')
+            }).catch(er=>console.log(er.response.data))
         }
     },
     async created(){

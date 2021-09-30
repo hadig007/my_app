@@ -66,7 +66,7 @@ div{
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    background-color: rgb(217, 159, 255);
+    background-color: violet;
     margin: 30%;
     border-radius: 4px;
     color: whitesmoke;
@@ -81,7 +81,7 @@ h1{
 .input{
     box-shadow:none;
     margin: 0;
-    background: violet;
+    background: rgba(255, 255, 255, 0.185);
     display: flex;
     flex-direction: column;
     border-radius: 4px;
