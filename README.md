@@ -1,5 +1,10 @@
 # my_app
 
+screenshoot
+
+![image](https://user-images.githubusercontent.com/62656877/135446983-d84ae1e6-bc5d-4f2e-b592-e0f34c19ae94.png)
+
+
 ## Project setup
 ```
 npm install
