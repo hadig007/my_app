@@ -8,7 +8,18 @@ const store = createStore({
     },
     getters:{
         token(state){
-            state.token 
+            return state.token = localStorage.getItem('token')
+        },
+
+    },
+    mutations:{
+        SET_TOKEN(state, payload){
+            state.token = payload
+        }
+    },
+    actions:{
+        storeToken(context, payload){
+            context.commit('SET_TOKEN', payload)
         }
     }
 })
