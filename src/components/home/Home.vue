@@ -34,20 +34,10 @@ export default {
     },
     async created(){
         this.loading = true
-        console.log('token di created',this.$store.state.token)
-        if(this.$store.state.token){
-            setTimeout(()=>{
-                axios.get('auth/user-profile')
-                .then((res)=>{
-                    console.log(res.data)
-                    this.loading = false
-                    this.$store.dispatch('storeUser', res.data)
-                    console.log('user set')
-                }).catch((e)=>{
-                    console.log(e.response.data)
-                })
-            console.log('having a token')
-            },1000)
+        let has = localStorage.getItem('token')
+        if(has){
+            this.loading = false
+            return true
         }else{
             this.loading = true
             this.$router.push('/login')
