@@ -6,12 +6,9 @@
             <buku
             v-for="b in buku"
             :key="b.id"
-            :id_buku="b.id_buku"
             :judul="b.judul"
             :imsc="b.image"
-            :penulis="b.penulis"
-            :keterangan="b.keterangan"
-            :inputer="b.inputer"
+            @hapus="hapus(b.id)"
             ></buku>
         </div>
     </div>
@@ -38,7 +35,14 @@ export default {
         ...mapGetters(['buku'])
     },
     methods:{
-
+        hapus(id){
+            axios.delete('destroy/'+ id).then((res)=>{
+                console.log(res.data)
+                this.buku.shift(b=>b.id == id)
+            })
+                .catch(er=>console.log(er.response.data)
+            )
+        }
     },
     async created(){
         setTimeout(()=>{

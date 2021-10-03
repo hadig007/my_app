@@ -4,12 +4,12 @@
             <img :src="img" />
         </div>
         <div class="body">
-            <h6><span>ID Buku</span> {{ id_buku}}</h6>
-            <h6><span>Judul Buku</span> {{ judul }}</h6>
-            <h6><span>Penulis Buku</span> {{ penulis }}</h6>
-            <h6><span>Keterangan</span> {{ keterangan }}</h6>
-            <h6><span>Inputer</span> {{ inputer }}</h6>
-            <p>img source : {{ imsc }}</p>
+            <h6>{{ judul }}</h6>
+        </div>
+        <div class="button">
+            <button v-on:click="$emit('detail')">Detail 👍</button>
+            <button v-on:click="$emit('edit')">Edit 🖊️</button>
+            <button v-on:click="$emit('hapus')">Hapus ❌</button>
         </div>
     </div>
 </template>
@@ -23,7 +23,7 @@ export default {
         }
     },
     props:[
-        'id_buku','judul','penulis','keterangan', 'inputer', 'imsc'
+        'id_buku','judul','penulis','keterangan', 'inputer', 'imsc','id'
     ],
     computed:{
         img(){
@@ -35,12 +35,13 @@ export default {
 
 <style scoped>
 .card{
-    width: 15rem;
+    /* width: 15rem; */
     border-radius: 4px;
     margin: 10px;
     display: inline-block;
-    min-width: 15rem;
-    height: 15rem;
+    /* min-width: 15rem; */
+    height: 300px;
+    padding: 5px;
 }
 h2{
     background-color: violet;
@@ -50,13 +51,26 @@ h2{
     color: rgb(83, 60, 104);
 }
 .body{
-    padding: 5px;
+    padding: 5px 10px;
+    width: 200px;
 }
 span{
     color: grey;
 }
 img{
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    height: 200px;
+}
+.button{
+    display: flex;
+    justify-content: space-around;
+    
+}
+button{
+    border-radius: 4px;
+    border: transparent solid 1px;
+    background-color: rgb(224, 224, 224);
+    padding: 2px 7px;
+    font-size: 12px;
 }
 </style>

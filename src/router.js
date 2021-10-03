@@ -10,7 +10,7 @@ import Profile from './components/profile/Profile.vue'
 const router = createRouter({
     history: createWebHistory(),
     routes:[
-        {path:'/', redirect:'/home'},
+        {path:'/', redirect:'/home/semua_buku'},
         {path:'/home', component : Home,children:[
             {path:'tambah_buku', component:TambahBuku},
             {path:'semua_buku', component:SemuaBuku},
