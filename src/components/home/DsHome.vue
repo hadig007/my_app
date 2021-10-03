@@ -8,22 +8,27 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div v-if="mini" v-on:click="minied" class="col-md-1">
+                    <!-- mini sidebar  -->
+                    <div v-if="mini" v-on:click="minied" class="col-sm-1">
                         <mini-sidebar></mini-sidebar>
                     </div>
-                    <div  v-if="mini" class="col-md-11">
+                    <div  v-if="mini" class="col-sm-11">
                         <!-- main content -->
-                       <div class="content"></div>
+                       <div class="content">
+                           <router-view></router-view>
+                       </div>
                     </div>
                     
-
+                    <!-- normal sidebar  -->
                     <div v-if="!mini" v-on:click="minied"  class="col-md-2">
                         <!-- sidebar -->
                         <sidebar></sidebar>
                     </div>
                     <div v-if="!mini"  class="col-md-10">
                         <!-- main content -->
-                       <div class="content"></div>
+                       <div class="content">
+                           <router-view></router-view>
+                       </div>
                     </div>
 
                 </div>
@@ -54,6 +59,7 @@ export default {
         }
     },
     async created(){
+                this.loading = true
         await axios.get('auth/user-profile',{
             headers:{
                 Authorization : 'Bearer ' + localStorage.getItem('token')
@@ -68,7 +74,7 @@ export default {
                 this.$router.push('/login')
                 localStorage.removeItem('token')
                 console.log('deleting token from local storage')
-                console.log('close, because not having a token')
+                console.log('close, token has expired')
             }))
         this.loading = true
             let has = localStorage.getItem('token')

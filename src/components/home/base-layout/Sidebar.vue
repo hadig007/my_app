@@ -7,12 +7,18 @@
                 <h4><i class="fas fa-bars"></i></h4>
             </button>
         </div>
-        <div class="account">
-            <h5><i class="fas fa-user-circle"></i> Account</h5>
+        <div class="account"> 
+            <router-link to="/home/profile">
+                <h5><i class="fas fa-user-circle"></i> Account</h5>
+            </router-link>
         </div>
         <div class="menu">
-            <h5><i class="fas fa-book-medical"></i> Add Book</h5>
-            <h5><i class="fas fa-book"></i> All Book</h5>
+             <router-link to="/home/tambah_buku">
+                <h5><i class="fas fa-book-medical"></i> Add Book</h5>
+            </router-link>
+            <router-link to="/home/semua_buku">
+                <h5><i class="fas fa-book"></i> All Book</h5>
+            </router-link>
         </div>
         </div>
     </div>
@@ -61,5 +67,9 @@ button{
 }
 h5{
     margin: 30px 0;
+}
+a{
+    color: whitesmoke;
+    text-decoration: none;
 }
 </style>

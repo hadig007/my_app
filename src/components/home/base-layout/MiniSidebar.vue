@@ -5,12 +5,12 @@
             <h4><i class="fas fa-bars"></i></h4>
         </button>
             <!-- account -->
-        <h5><i class="fas fa-user-circle"></i></h5>
+        <!-- <h5><i class="fas fa-user-circle"></i></h5> -->
         <!-- menu -->
         <!-- tambah buku  -->
-        <h5><i class="fas fa-book-medical"></i></h5>
+            <!-- <h5><i class="fas fa-book-medical"></i></h5> -->
         <!-- semua buku  -->
-        <h5><i class="fas fa-book"></i></h5>
+            <!-- <h5><i class="fas fa-book"></i></h5> -->
        </div>
     </div>
 </template>
@@ -44,6 +44,10 @@ button{
     color: white;
     border: none;
     padding: 0;
+}
+a{
+    color: whitesmoke;
+    text-decoration: none;
 }
 </style>
 

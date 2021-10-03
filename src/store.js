@@ -4,13 +4,17 @@ const store = createStore({
     state(){
         return{
             token : null,
-            user :null
+            user :null,
+            buku:null
         }
     },
     getters:{
         user(state){
             return state.user
         },
+        buku(state){
+            return state.buku
+        }
     },
     mutations:{
         SET_TOKEN(state, payload){
@@ -19,6 +23,9 @@ const store = createStore({
         SET_USER(state, payload){
             state.user = payload
         },
+        SET_BUKU(state, payload){
+            state.buku = payload
+        }
     },
     actions:{
         storeToken(context, payload){
@@ -26,6 +33,9 @@ const store = createStore({
         },
         storeUser(context, payload){
              context.commit('SET_USER', payload)
+        },
+        storeBuku(context, payload){
+            context.commit('SET_BUKU', payload)
         }
     }
 })

@@ -20,7 +20,12 @@ export default {
                 this.$store.dispatch('storeToken', null)
                 this.$store.dispatch('storeUser', null)
                 this.$router.push('/login')
-            }).catch(er=>console.log(er.response.data))
+            }).catch((er)=>{
+                console.log(er.response.data)
+                localStorage.removeItem('token')
+                console.log('logout, deleting token from local storage')
+                this.$router.push('/login')
+            })
         }
     },
 }
